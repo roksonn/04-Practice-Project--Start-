@@ -20,7 +20,7 @@ jobs:
         run: npm ci
       - name: Run test
         run: npm run test
-  build:
+  deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -30,15 +30,7 @@ jobs:
         run: npm ci
       - name: Run build
         run: npm run build
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v4
-      - name: Install dependecies
-        run: npm ci
-      - name: Run deploy
+      - name: Deploy
         run: |
           echo "Deploying..."
           echo "Deployed"
